@@ -12,16 +12,16 @@ import {
   DrawerCloseButton,
   DrawerHeader,
   DrawerBody,
+  useColorMode,
 } from "@chakra-ui/react";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
 import Theme from "../Components/Theme";
-import { useColorMode } from "@chakra-ui/react";
 
-const name = " < Neeraj />";
+const name = " < BrainerHub />";
 
-const NavBar = () => {
+const NavBar: React.FC = () => {
   const { colorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
 

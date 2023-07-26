@@ -41,7 +41,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onAddProduct }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/products",
+        "https://brainerhub-backend.onrender.com/api/products",
         productData
       );
 
@@ -119,7 +119,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onAddProduct }) => {
                 <FormLabel>Product Image</FormLabel>
                 <Input
                   type="text"
-                  placeholder="Enter product image"
+                  placeholder="Enter product image Url"
                   name="image"
                   value={productData.image}
                   onChange={handleChange}

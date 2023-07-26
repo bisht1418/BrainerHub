@@ -24,7 +24,7 @@ export default function Login() {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const baseUrl = "http://localhost:8080/api/auth/login";
+  const baseUrl = "https://brainerhub-backend.onrender.com/api/auth/login";
   const toast = useToast();
   const navigate = useNavigate();
 

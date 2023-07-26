@@ -42,7 +42,7 @@ const Product: React.FC<ProductListProps> = () => {
   const [limit, setLimit] = useState(
     parseInt(searchParams.get("limit") || "10")
   );
-  const baseUrl = "http://localhost:8080";
+  const baseUrl = "https://brainerhub-backend.onrender.com";
   const totalPages = Math.floor(products.length / limit);
 
   useEffect(() => {

@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.active{
+  color: teal;
+}
+
+#product{
+  background: rgba(255, 175, 175, 0.146);
+}
+
+#register{
+  position: relative;
+  top: -4rem;
+}
+
+#login{
+  position: relative;
+  top: -5rem;
+}
+
+
+
+

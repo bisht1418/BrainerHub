@@ -26,7 +26,7 @@ export default function Register() {
     password: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const baseUrl = "http://localhost:8080/api/auth/register";
+  const baseUrl = "https://brainerhub-backend.onrender.com/api/auth/register";
   const toast = useToast();
   const navigate = useNavigate();
 

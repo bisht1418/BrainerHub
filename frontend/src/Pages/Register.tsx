@@ -83,6 +83,7 @@ export default function Register() {
 
   return (
     <Flex
+      id="register"
       minH={"100vh"}
       align={"center"}
       justify={"center"}

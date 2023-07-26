@@ -22,6 +22,7 @@ interface Product {
   image: string;
   name: string;
   price: number;
+  quantity: number;
   description: string;
 }
 
@@ -37,6 +38,7 @@ const Product: React.FC<ProductListProps> = () => {
   const [sort, setSort] = useState(searchParams.get("sort") || "");
   const [order, setOrder] = useState(searchParams.get("order") || "asc");
   const [page, setPage] = useState(parseInt(searchParams.get("page") || "1"));
+
   const [limit, setLimit] = useState(
     parseInt(searchParams.get("limit") || "10")
   );
@@ -83,8 +85,7 @@ const Product: React.FC<ProductListProps> = () => {
   const handleAddProduct = () => {};
 
   const handleNextPage = () => {
-    console.log(page * limit);
-    if (page * limit > products.length) {
+    if (products.length < limit) {
       return;
     } else {
       setPage((prevPage) => prevPage + 1);
@@ -96,8 +97,6 @@ const Product: React.FC<ProductListProps> = () => {
       setPage((prevPage) => prevPage - 1);
     }
   };
-
-  console.log(page, totalPages);
 
   return (
     <Flex id="product" direction="row">
@@ -189,6 +188,7 @@ const Product: React.FC<ProductListProps> = () => {
 
                   <Heading size="md">Name: {product.name}</Heading>
                   <p>Price: {product.price}</p>
+                  <p>Quantity: {product.quantity}</p>
                   <p>Description: {product.description}</p>
                 </Box>
               ))}

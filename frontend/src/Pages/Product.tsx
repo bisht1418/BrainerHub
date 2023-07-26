@@ -12,12 +12,14 @@ import {
   Heading,
   Spinner,
   SimpleGrid,
+  Image,
 } from "@chakra-ui/react";
 import { useNavigate, useLocation } from "react-router-dom";
 import ProductForm from "../Components/ProductForm";
 
 interface Product {
   _id: string;
+  image: string;
   name: string;
   price: number;
   description: string;
@@ -39,6 +41,7 @@ const Product: React.FC<ProductListProps> = () => {
     parseInt(searchParams.get("limit") || "10")
   );
   const baseUrl = "http://localhost:8080";
+  const totalPages = Math.floor(products.length / limit);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -79,13 +82,31 @@ const Product: React.FC<ProductListProps> = () => {
 
   const handleAddProduct = () => {};
 
+  const handleNextPage = () => {
+    console.log(page * limit);
+    if (page * limit > products.length) {
+      return;
+    } else {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (page > 1) {
+      setPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  console.log(page, totalPages);
+
   return (
-    <Flex direction="row">
+    <Flex id="product" direction="row">
       <Box
         w={"25%"}
         p={3}
         style={{ boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" }}
       >
+        <ProductForm onAddProduct={handleAddProduct} />
         <Stack direction="column">
           <Input
             placeholder="Search"
@@ -102,14 +123,7 @@ const Product: React.FC<ProductListProps> = () => {
             <option value="asc">Asc</option>
             <option value="desc">Desc</option>
           </Select>
-          <ProductForm onAddProduct={handleAddProduct} />
-          <Input
-            type="number"
-            placeholder="Page"
-            value={page}
-            onChange={handlePageChange}
-            maxWidth="100px"
-          />
+
           <Input
             type="number"
             placeholder="Limit"
@@ -117,6 +131,37 @@ const Product: React.FC<ProductListProps> = () => {
             onChange={handleLimitChange}
             maxWidth="100px"
           />
+          <Box mt={"3"} style={{ display: "flex" }}>
+            <Button
+              size="xs"
+              colorScheme={page == 1 ? "red" : "blue"}
+              onClick={handlePrevPage}
+              disabled={page === 1}
+            >
+              Prev Page
+            </Button>
+            <p
+              style={{
+                // margin: "10px",
+
+                padding: "10px",
+                display: "flex",
+                position: "relative",
+                top: "-10px",
+                fontWeight: "bold",
+              }}
+            >
+              {page}
+            </p>
+            <Button
+              size="xs"
+              colorScheme={page * limit > products.length ? "red" : "blue"}
+              onClick={handleNextPage}
+              disabled={page * limit > products.length}
+            >
+              Next Page
+            </Button>
+          </Box>
         </Stack>
       </Box>
 
@@ -133,7 +178,15 @@ const Product: React.FC<ProductListProps> = () => {
                   borderWidth="1px"
                   p={4}
                   my={2}
+                  textAlign={"center"}
                 >
+                  <Image
+                    w={"100px"}
+                    objectFit="cover"
+                    src={product.image}
+                    alt={product.name}
+                  />
+
                   <Heading size="md">Name: {product.name}</Heading>
                   <p>Price: {product.price}</p>
                   <p>Description: {product.description}</p>

@@ -180,7 +180,8 @@ const Product: React.FC<ProductListProps> = () => {
                   textAlign={"center"}
                 >
                   <Image
-                    w={"100px"}
+                    w={"200px"}
+                    h={"200px"}
                     objectFit="cover"
                     src={product.image}
                     alt={product.name}

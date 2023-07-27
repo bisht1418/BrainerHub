@@ -34,6 +34,7 @@ interface ProductFormProps {
 
 const ProductForm: React.FC<ProductFormProps> = ({ onAddProduct }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [update, setUpdate] = React.useState(false);
   const [productData, setProductData] = React.useState<Product>({
     image: "",
     name: "",
@@ -45,9 +46,10 @@ const ProductForm: React.FC<ProductFormProps> = ({ onAddProduct }) => {
     useDispatch();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    await dispatch(addProduct(productData));
-    onClose();
     e.preventDefault();
+    await dispatch(addProduct(productData));
+    setUpdate(!update);
+    onClose();
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

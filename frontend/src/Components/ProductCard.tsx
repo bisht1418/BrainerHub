@@ -38,25 +38,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
       borderColor={cardBorderColor}
       boxShadow="md"
     >
-      <Image src={image} alt={name} h="200px" objectFit="cover" />
-
       <Box p="4">
-        <Flex align="baseline">
-          <Badge borderRadius="full" px="2" colorScheme="teal">
-            New
-          </Badge>
-          <Box
-            color="gray.500"
-            fontWeight="semibold"
-            letterSpacing="wide"
-            fontSize="xs"
-            textTransform="uppercase"
-            ml="2"
-          >
-            {rating} <StarIcon color="teal.500" />
-          </Box>
-        </Flex>
-
+        <Box border={"1px solid red"} m={"auto"}>
+          <Image src={image} alt={name} h="200px" objectFit="cover" />
+        </Box>
         <Text
           mt="1"
           fontWeight="semibold"

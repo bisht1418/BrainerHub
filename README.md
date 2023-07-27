@@ -37,25 +37,31 @@ Backend: [https://brainerhub-backend.onrender.com/](https://brainerhub-backend.o
 5. Open your browser and visit `http://localhost:8080` to start training your brain!
 
 
+
 # API Endpoints 🚀
-[POST] /api/auth/register 📝✨
+[POST] **/api/auth/register 📝✨**
 
 User Registration
-[POST] /api/auth/login 🔑✨
+[POST] **/api/auth/login 🔑✨**
 
 User Login
-[GET] /api/products 🛍️✨
+[GET] **/api/products 🛍️✨**
 
 Get Product by ID
-[POST] /api/products ➕✨
+[POST] **/api/products ➕✨**
+
 
 
 💡 **Feedback** 💡
 
 We welcome any feedback, suggestions, or contributions! Feel free to create an issue or submit a pull request.
 
+
+
 📧 **Contact** 📧
 
 For any inquiries or support, please contact us at [neeraj@gmail.com](mailto:neeraj@gmail.com).
+
+
 
 **Happy Training! 🧠**

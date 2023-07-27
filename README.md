@@ -24,7 +24,7 @@ Backend: [https://brainerhub-backend.onrender.com/](https://brainerhub-backend.o
 
 🛠️ **Tech Stack** 🛠️
 
-- Frontend: React, Chakra UI, Redux
+- Frontend: React, Typescript, Chakra UI, Redux
 - Backend: Node.js, Express, MongoDB
 - Deployment: Vercel, Render
 

@@ -15,6 +15,10 @@ import {
   FormHelperText,
 } from "@chakra-ui/react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../Redux/action";
+import { ThunkDispatch } from "redux-thunk";
+import { RootState, ProductActionTypes } from "../Redux/actionType";
 
 interface Product {
   image: string;
@@ -37,21 +41,13 @@ const ProductForm: React.FC<ProductFormProps> = ({ onAddProduct }) => {
     description: "",
     quantity: 0,
   });
+  const dispatch: ThunkDispatch<RootState, null, ProductActionTypes> =
+    useDispatch();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    try {
-      const response = await axios.post(
-        "https://brainerhub-backend.onrender.com/api/products",
-        productData
-      );
-
-      if (response.data) {
-        onAddProduct(productData);
-        onClose();
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    await dispatch(addProduct(productData));
+    onClose();
+    e.preventDefault();
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
